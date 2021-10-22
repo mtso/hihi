@@ -135,6 +135,17 @@
 
   // ENTRYPOINT
 
+  window.addEventListener('resize', resizeCanvas, false);
+
+  function resizeCanvas() {
+    canvas.setHeight(window.innerHeight);
+    canvas.setWidth(window.innerWidth);
+    canvas.renderAll();
+  }
+
+  // resize on init
+  resizeCanvas();
+
   const query = parseQuery(window.location.toString().split("?")[1]);
   let id = query.id;
 
