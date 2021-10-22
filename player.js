@@ -122,9 +122,19 @@
           cursorCanvas.add(circ);
           break;
         case 2:
-          canvas.getContext().lineTo(data.x, data.y);
-          canvas.getContext().stroke();
-          cursorCanvas.remove(circ);
+          const prev = buffer[i-1];
+          if (prev && prev.e === 0) { // No movement, just a dot.
+            canvas.getContext().lineTo(data.x + 0.01, data.y + 0.01);
+            canvas.getContext().stroke();
+            cursorCanvas.remove(circ);
+          } else {
+            canvas.getContext().lineTo(data.x, data.y);
+            canvas.getContext().stroke();
+            cursorCanvas.remove(circ);
+          }
+          break;
+        default:
+          console.warn("Unrecognized opcode", data.e);
           break;
       }
 
