@@ -66,8 +66,9 @@
   });
 
   function onMouseDown(event) {
-    fetch('https://hihifi.glitch.me/animations/' + id + '/count_view', { method: "POST" }).catch((err) => console.error(err))
-    playAnimation(previousBuffer);
+    playAnimation(previousBuffer, () => {
+      fetch('https://hihifi.glitch.me/animations/' + id + '/count_view', { method: "POST" }).catch((err) => console.error(err))
+    });
   }
 
   canvas.on("mouse:down", onMouseDown);
@@ -79,7 +80,7 @@
     canvas.backgroundColor = "black";
   }
 
-  function playAnimation(buffer) {
+  function playAnimation(buffer, cb) {
     if (isAnimationPlaying) return;
     isAnimationPlaying = true;
 
@@ -88,6 +89,7 @@
 
     var t = setInterval(function () {
       if (i >= buffer.length) {
+        if (cb) cb();
         isAnimationPlaying = false;
         clearInterval(t);
         t = null;
@@ -142,8 +144,9 @@
 
   getAnimation(id)
     .then(() => {
-      fetch('https://hihifi.glitch.me/animations/' + id + '/count_view', { method: "POST" }).catch((err) => console.error(err))
-      playAnimation(previousBuffer);
+      playAnimation(previousBuffer, () => {
+        fetch('https://hihifi.glitch.me/animations/' + id + '/count_view', { method: "POST" }).catch((err) => console.error(err))
+      });
     })
     .catch((err) => console.error(err));
 })();
