@@ -151,6 +151,7 @@
           case 2:
             canvas.getContext().lineTo(data.x, data.y);
             canvas.getContext().stroke();
+            canvas.getContext().closePath();
             // canvas.getContext().filter = 'none';
             cursorCanvas.remove(circ);
             break;
