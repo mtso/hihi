@@ -115,7 +115,8 @@
         switch (data.e) {
           case 0:
             canvas.getContext().beginPath();
-            canvas.getContext().lineCap = 'round'
+            canvas.getContext().lineCap = "round";
+            canvas.getContext().lineJoin = "round";
             canvas.getContext().moveTo(data.x, data.y);
             // canvas.getContext().filter = 'blur(10)';
             
