@@ -66,6 +66,7 @@
   });
 
   function onMouseDown(event) {
+    fetch('https://hihifi.glitch.me/animations/' + id + '/count_view', { method: "POST" }).catch((err) => console.error(err))
     playAnimation(previousBuffer);
   }
 
@@ -141,6 +142,7 @@
 
   getAnimation(id)
     .then(() => {
+      fetch('https://hihifi.glitch.me/animations/' + id + '/count_view', { method: "POST" }).catch((err) => console.error(err))
       playAnimation(previousBuffer);
     })
     .catch((err) => console.error(err));
