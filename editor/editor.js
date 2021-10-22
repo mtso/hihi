@@ -100,8 +100,15 @@
       }
       return lines;
     }
+
+    function resetCanvas() {
+      canvas.clear();
+      canvas.backgroundColor = "black";
+    }
     
     $('playback').addEventListener('click', function(event) {
+      resetCanvas();
+
       console.log(encodeHihi(previousBuffer))
       var i = 0;
         
