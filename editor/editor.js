@@ -107,7 +107,10 @@
     }
     
     $('playback').addEventListener('click', function(event) {
-      resetCanvas();
+      // todo: intention is to make it easier to see what
+      // the playback will look like but resetting the canvas
+      // seems to make the next draw remove previous draws as well.
+      // resetCanvas();
 
       console.log(encodeHihi(previousBuffer))
       var i = 0;
