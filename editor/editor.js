@@ -172,6 +172,7 @@
       }).then((resp) => resp.json()).then((result) => {
         console.log(result)
         $('saved-id').innerText = "https://mtso.github.io/hihi/?id=" + result.id
+        $('saved-id').href = "https://mtso.github.io/hihi/?id=" + result.id
       })
     })
   
